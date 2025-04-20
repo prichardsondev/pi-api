@@ -1,0 +1,23 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/pi/pi-api
+
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 180
+      runas: pi
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 180
+      runas: pi
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 180
+      runas: pi
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 60
+      runas: pi

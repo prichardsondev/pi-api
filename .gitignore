@@ -1,0 +1,21 @@
+# Environment and AWS credentials
+.env
+.aws/
+*.pem
+
+# Logs and output
+*.log
+creds.log
+
+# Dependency folders
+node_modules/
+
+# PM2 runtime state (optional)
+~/.pm2/
+
+# IDE / OS junk
+.DS_Store
+*.swp
+
+
+aws-config.json

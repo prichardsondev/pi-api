@@ -1,0 +1,20 @@
+{
+  "name": "pi-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.787.0",
+    "@aws-sdk/credential-provider-env": "^3.775.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "node-dht-sensor": "^0.4.5",
+    "systeminformation": "^5.25.11"
+  }
+}
