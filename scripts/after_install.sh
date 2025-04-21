@@ -1,22 +1,19 @@
 #!/bin/bash
-echo "🔧 [AfterInstall] Installing dependencies and setting permissions..."
+echo "📦 [AfterInstall] Installing NPM packages and setting up environment..."
 cd /home/rat/pi-api || exit 1
 
-if [ -f package.json ]; then
-  echo "📦 Installing NPM packages..."
-  npm install --production --no-audit --no-fund --omit=dev
-fi
+# Always install all deps, not just production
+npm install --no-audit --no-fund
 
-# Install PM2 globally if not present
+# Ensure PM2 is globally installed
 if ! command -v pm2 &> /dev/null; then
   echo "🚀 Installing PM2 globally..."
   sudo npm install -g pm2
 fi
 
-# Permissions
+# Ensure refresh script is executable
 chmod +x /home/rat/.aws-bootstrap/refresh-creds.sh
 chmod +x start.sh
+
 mkdir -p logs
-
 echo "✅ AfterInstall complete."
-
