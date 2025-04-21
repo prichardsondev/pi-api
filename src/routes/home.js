@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Vet Pi API</title>
+        <title>Vet Pi API Landing</title>
         <style>
           body { font-family: Arial, sans-serif; padding: 2rem; line-height: 1.6; background: #f9f9f9; color: #333; }
           h1 { color: #2d6a4f; }
