@@ -1,12 +1,16 @@
 #!/bin/bash
 echo "🚀 [ApplicationStart] Refreshing STS credentials and starting app..."
+
 cd /home/rat/pi-api || exit 1
 
-# Refresh credentials
+# Ensure correct ownership before writing anything
+sudo chown -R rat:rat /home/rat/pi-api
+
+# Refresh temporary credentials
 /home/rat/.aws-bootstrap/refresh-creds.sh
 
-# Kill old instance (if any), start fresh
+# Restart clean with PM2
 pm2 delete vet-api || echo "⚠️ vet-api not previously running"
 pm2 start start.sh --name vet-api
 
-echo "✅ PM2 process 'vet-api' started clean"
+echo "✅ App started via PM2."
