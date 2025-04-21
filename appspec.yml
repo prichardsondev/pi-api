@@ -2,22 +2,19 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/pi/pi-api
+    destination: /home/rat/pi-api
+    overwrite: yes
 
 hooks:
-  BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 180
-      runas: pi
-  AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 180
-      runas: pi
-  ApplicationStart:
-    - location: scripts/application_start.sh
-      timeout: 180
-      runas: pi
   ApplicationStop:
     - location: scripts/application_stop.sh
-      timeout: 60
-      runas: pi
+      runas: rat
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      runas: rat
+  AfterInstall:
+    - location: scripts/after_install.sh
+      runas: rat
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      runas: rat
