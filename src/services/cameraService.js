@@ -6,7 +6,8 @@ const {
   PutObjectCommand
 } = require('@aws-sdk/client-s3');
 
-const imagePath = path.join(__dirname, '../../image.jpg');
+const imagePath = process.env.IMAGE_OUTPUT_PATH || '/home/rat/pi-api/image.jpg';
+
 const bucketName = 'pi-field-uploads';
 
 // Create S3 client with temporary credentials
