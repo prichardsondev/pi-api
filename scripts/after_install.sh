@@ -17,6 +17,13 @@ npm install dotenv || {
 # 🧠 Confirm it's installed
 npm list dotenv || echo "⚠️ dotenv still missing after install!"
 
+# 🛠 Rebuild native modules (especially node-dht-sensor)
+echo "🔧 Rebuilding node-dht-sensor for Pi hardware..."
+npm rebuild node-dht-sensor || {
+  echo "❌ Failed to rebuild node-dht-sensor!"
+  exit 1
+}
+
 # 🛠 Ensure PM2 exists
 if ! command -v pm2 &> /dev/null; then
   sudo npm install -g pm2
