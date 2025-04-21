@@ -1,5 +1,12 @@
 #!/bin/bash
 echo "🧹 [BeforeInstall] Cleaning up old files..."
-cd /home/rat/pi-api || exit 1
-rm -f .env
-echo "✅ Cleanup complete."
+
+APP_DIR="/home/rat/pi-api"
+
+if [ -d "$APP_DIR" ]; then
+  cd "$APP_DIR"
+  rm -f .env
+  echo "✅ Cleaned .env"
+else
+  echo "⚠️ $APP_DIR not found — skipping cleanup"
+fi
