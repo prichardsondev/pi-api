@@ -1,20 +1,24 @@
 #!/bin/bash
-echo "📦 [AfterInstall] Installing NPM packages and setting up environment..."
+echo "📦 [AfterInstall] Installing NPM packages..."
 
 cd /home/rat/pi-api || exit 1
 
-# Install all runtime dependencies
-npm install --no-audit --no-fund
+npm install --no-audit --no-fund || {
+  echo "❌ NPM install failed!"
+  exit 1
+}
 
-# Safety net: ensure dotenv is there
-if ! npm list dotenv >/dev/null 2>&1; then
-  echo "⛑ Installing missing dotenv..."
-  npm install dotenv
-fi
+# 🔒 Force install dotenv always
+npm install dotenv || {
+  echo "❌ Failed to install dotenv!"
+  exit 1
+}
 
-# Ensure PM2 exists
+# 🧠 Confirm it's installed
+npm list dotenv || echo "⚠️ dotenv still missing after install!"
+
+# 🛠 Ensure PM2 exists
 if ! command -v pm2 &> /dev/null; then
-  echo "🚀 Installing PM2 globally..."
   sudo npm install -g pm2
 fi
 
@@ -23,4 +27,3 @@ chmod +x start.sh
 mkdir -p logs
 
 echo "✅ AfterInstall complete."
-
